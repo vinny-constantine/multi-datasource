@@ -1,6 +1,6 @@
-package com.xwsoft.multidatasource.annotation;
+package com.dover.multidatasource.annotation;
 
-import com.xwsoft.multidatasource.datasource.SwitchableDataSource;
+import com.dover.multidatasource.datasource.SwitchableDataSource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
 /**
  * process class annotated by @SwitchDataSource, then generate their proxy that switch dataSource via dataSourceName
  *
- * @Dover
+ * @author Dover
  */
 public class SwitchDataSourceBeanPostProcessor implements BeanPostProcessor {
 

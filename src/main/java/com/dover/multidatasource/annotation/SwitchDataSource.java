@@ -1,4 +1,4 @@
-package com.xwsoft.multidatasource.annotation;
+package com.dover.multidatasource.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 
@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 /**
  * for switching dataSource
  *
- * @Author Dover
+ * @author Dover
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

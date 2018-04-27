@@ -1,4 +1,4 @@
-package com.xwsoft.multidatasource.datasource;
+package com.dover.multidatasource.datasource;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * switch to specified dataSource via dataSouceName
  *
- * @Dover
+ * @author Dover
  */
 public class SwitchableDataSource extends AbstractRoutingDataSource {
 

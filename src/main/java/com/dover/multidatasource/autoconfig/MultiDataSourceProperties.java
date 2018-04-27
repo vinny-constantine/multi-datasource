@@ -1,4 +1,4 @@
-package com.xwsoft.multidatasource.autoconfig;
+package com.dover.multidatasource.autoconfig;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -6,8 +6,10 @@ import java.util.List;
 
 /**
  * all available dataSourceNames
+ *
+ * @author Dover
  */
-@ConfigurationProperties("xwsoft.multi")
+@ConfigurationProperties("dover.multi")
 public class MultiDataSourceProperties {
 
     private List<String> dataSourceNames;

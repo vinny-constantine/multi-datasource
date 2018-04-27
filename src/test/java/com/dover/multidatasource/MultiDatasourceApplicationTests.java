@@ -1,4 +1,4 @@
-package com.xwsoft.multidatasource;
+package com.dover.multidatasource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

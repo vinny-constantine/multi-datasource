@@ -1,12 +1,10 @@
-package com.xwsoft.multidatasource.autoconfig;
+package com.dover.multidatasource.autoconfig;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import com.xwsoft.multidatasource.annotation.SwitchDataSourceBeanPostProcessor;
-import com.xwsoft.multidatasource.datasource.SwitchableDataSource;
+import com.dover.multidatasource.datasource.SwitchableDataSource;
+import com.dover.multidatasource.annotation.SwitchDataSourceBeanPostProcessor;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +19,8 @@ import java.util.Properties;
 
 /**
  * auto register mandatory bean
+ *
+ * @author Dover
  */
 @Configuration
 @ConditionalOnClass(DataSource.class)
@@ -41,13 +41,13 @@ public class MultiDataSourceAutoConfiguration {
         List<String> dataSourceNames = multiDataSourceProperties.getDataSourceNames();
         for (String dataSourceName : dataSourceNames) {
             properties = new Properties();
-            properties.put("driverClassName", environment.getRequiredProperty("xwsoft.multi." + dataSourceName + ".driverClassName"));
-            properties.put("url", environment.getRequiredProperty("xwsoft.multi." + dataSourceName + ".url"));
-            properties.put("username", environment.getRequiredProperty("xwsoft.multi." + dataSourceName + ".username"));
-            properties.put("password", environment.getRequiredProperty("xwsoft.multi." + dataSourceName + ".password"));
-            properties.put("initialSize", "5");
-            properties.put("maxActive", "10");
-            properties.put("minIdle", "1");
+            properties.put("driverClassName", environment.getRequiredProperty("dover.multi." + dataSourceName + ".driverClassName"));
+            properties.put("url", environment.getRequiredProperty("dover.multi." + dataSourceName + ".url"));
+            properties.put("username", environment.getRequiredProperty("dover.multi." + dataSourceName + ".username"));
+            properties.put("password", environment.getRequiredProperty("dover.multi." + dataSourceName + ".password"));
+            properties.put("initialSize", environment.getRequiredProperty("dover.multi." + dataSourceName + ".initialSize"));
+            properties.put("maxActive", environment.getRequiredProperty("dover.multi." + dataSourceName + ".maxActive"));
+            properties.put("minIdle", environment.getRequiredProperty("dover.multi." + dataSourceName + ".minIdle"));
             dataSourceMap.put(dataSourceName, DruidDataSourceFactory.createDataSource(properties));
         }
         return dataSourceMap;
