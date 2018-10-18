@@ -2,7 +2,7 @@
 * Overview
   * 用于在多数据源之间切换
   * 依赖SpringBoot环境
-* Useage
+* Usage
   1. 使用maven依赖该项目
   ```xml
   <dependency>

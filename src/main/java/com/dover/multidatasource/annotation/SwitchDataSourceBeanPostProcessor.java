@@ -22,12 +22,9 @@ public class SwitchDataSourceBeanPostProcessor implements BeanPostProcessor {
         if (beanClass.isAnnotationPresent(SwitchDataSource.class)) {
             SwitchDataSource annotation = beanClass.getAnnotation(SwitchDataSource.class);
             final String dataSourceName = annotation.value();
-            return Proxy.newProxyInstance(this.getClass().getClassLoader(), beanClass.getInterfaces(), new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    SwitchableDataSource.switching(dataSourceName);
-                    return method.invoke(bean, args);
-                }
+            return Proxy.newProxyInstance(this.getClass().getClassLoader(), beanClass.getInterfaces(), (proxy, method, args) -> {
+                SwitchableDataSource.switching(dataSourceName);
+                return method.invoke(bean, args);
             });
         }
         return bean;
